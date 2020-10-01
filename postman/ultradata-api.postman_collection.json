@@ -1,0 +1,288 @@
+{
+	"info": {
+		"_postman_id": "57d9736c-3777-4892-8385-883e665f5cec",
+		"name": "ultradata-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get auth token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d9e23022-9fdd-4bda-8577-790fd2c682ea",
+						"exec": [
+							"pm.test(\"ultradata-auth and ultradata-refresh must exist\", function () {",
+							"pm.expect(pm.environment.has(\"ultradata-auth\")).to.equal(true);",
+							"pm.expect(pm.environment.has(\"ultradata-refresh\")).to.equal(true);",
+							"var jsonData = pm.response.json();",
+							"pm.environment.set(\"ultradata-auth\", jsonData.access_token);",
+							"pm.environment.set(\"ultradata-refresh\", jsonData.refresh_token);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "{{ultradata-user}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{ultradata-pw}}",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{ultradata-api}}/v1/authorization/token",
+					"host": [
+						"{{ultradata-api}}"
+					],
+					"path": [
+						"v1",
+						"authorization",
+						"token"
+					]
+				},
+				"description": "how to get an authorization token."
+			},
+			"response": []
+		},
+		{
+			"name": "version",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ultradata-auth}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{ultradata-api}}/v1/version",
+					"host": [
+						"{{ultradata-api}}"
+					],
+					"path": [
+						"v1",
+						"version"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "domain-activity",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ultradata-auth}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/vnd.neustar.threatfeeds.response.domainactivity.v1+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{ultradata-api}}/v1/domain/activity?domain=neustar.biz&starttime=1601071800&endtime=1601292900",
+					"host": [
+						"{{ultradata-api}}"
+					],
+					"path": [
+						"v1",
+						"domain",
+						"activity"
+					],
+					"query": [
+						{
+							"key": "domain",
+							"value": "neustar.biz"
+						},
+						{
+							"key": "starttime",
+							"value": "1601071800"
+						},
+						{
+							"key": "endtime",
+							"value": "1601292900"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "hostips",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ultradata-auth}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{ultradata-api}}/v1/domain/hostips?domain=neustar.biz&starttime=1598203342&endtime=1598205000",
+					"host": [
+						"{{ultradata-api}}"
+					],
+					"path": [
+						"v1",
+						"domain",
+						"hostips"
+					],
+					"query": [
+						{
+							"key": "domain",
+							"value": "neustar.biz"
+						},
+						{
+							"key": "starttime",
+							"value": "1598203342"
+						},
+						{
+							"key": "endtime",
+							"value": "1598205000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "refresh token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "eb6d5b46-97c6-4e20-ac3e-f01c0e95d6f0",
+						"exec": [
+							"pm.test(\"ultradata-auth and ultradata-refresh must exist\", function () {",
+							"pm.expect(pm.environment.has(\"ultradata-auth\")).to.equal(true);",
+							"pm.expect(pm.environment.has(\"ultradata-refresh\")).to.equal(true);",
+							"var jsonData = pm.response.json();",
+							"pm.environment.set(\"ultradata-auth\", jsonData.access_token);",
+							"pm.environment.set(\"ultradata-refresh\", jsonData.refresh_token);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "refresh_token",
+							"type": "text"
+						},
+						{
+							"key": "refresh_token",
+							"value": "{{ultradata-refresh}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{ultradata-api}}/v1/authorization/token",
+					"host": [
+						"{{ultradata-api}}"
+					],
+					"path": [
+						"v1",
+						"authorization",
+						"token"
+					]
+				},
+				"description": "in case you need to refresh a token.  an example"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "9bfe488c-d831-4a03-893a-2c80613a762b",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "4cb9af91-cfc3-47cb-9607-28e04c3b0888",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
