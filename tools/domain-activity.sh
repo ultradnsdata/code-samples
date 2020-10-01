@@ -19,17 +19,29 @@ if [ "$?" -ne 0 ] ; then
     exit 2
 fi
 
-which date > /dev/null
+date +"%s" -d "2020-01-01" 2> /dev/null
 if [ "$?" -ne 0 ] ; then
-    echo "date is required - please install and retry"
-    #who doesn't have 'date'!?
-    exit 3
+    which gdate > /dev/null
+    if [ "$?" -ne 0 ] ; then
+	echo "Need to convert human dates to timestamps - install gdate?"
+	exit 3
+    else
+	DATE=gdate
+    fi
+else
+    DATE=date
 fi
 
 
 ULTRA_TOKEN=`cat ~/.ultradata/token`
-STARTTIME=$1
-ENDTIME=$2
+STARTTIME=`$DATE +"%s" -d $1`
+if [ "$?" -ne 0 ] ; then
+    exit 4
+fi
+ENDTIME=`$DATE +"%s" -d $2`
+if [ "$?" -ne 0 ] ; then
+    exit 4
+fi
 
 echo "domain,stubCount,hostIpCount,subdomainCount,nameserverCount"
 while read DOMAIN ; do
@@ -58,7 +70,15 @@ while read DOMAIN ; do
 	#anything other than a 401 error or a 202 with a location will fall through
 	#  including success and any other error condition
 
+	#e.g. {"errorCode": 60001, "errorDescription": "Query interval is longer than 14 days (1590984000-1588305600=2678400)"}
+	#     
+
     done
-    echo $QUERY_RESULT | jq -r '. | "'$DOMAIN', \(.stubCount), \(.hostIpCount), \(.subdomainCount), \(.nameserverCount)"'
+    if [ `echo $QUERY_RESULT | jq -r '.stubCount'` = "null" ] ; then
+	echo $QUERY_RESULT
+    else
+	echo $QUERY_RESULT | jq -r '. | "'$DOMAIN', \(.stubCount), \(.hostIpCount), \(.subdomainCount), \(.nameserverCount)"'
+    fi
+	
 done
 
