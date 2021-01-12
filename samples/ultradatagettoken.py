@@ -20,8 +20,13 @@ def ultradata_login():
                                      'username': ULTRADATA_USERNAME,
                                      'password': ULTRADATA_PASSWORD
                                  })
+
     auth = auth_response.json()
-    return auth['access_token']
+    try:
+        return auth['access_token']
+    except KeyError:
+        print(auth)
+        raise Exception("Login failure")
 
 
 if __name__ == '__main__':
