@@ -1,17 +1,355 @@
 {
 	"info": {
-		"_postman_id": "57d9736c-3777-4892-8385-883e665f5cec",
-		"name": "ultradata-api",
+		"_postman_id": "69d6bfb1-63cb-451c-9902-1429614e3981",
+		"name": "ultradata-common-api",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
+		{
+			"name": "domain",
+			"item": [
+				{
+					"name": "domain-activity",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ultradata-auth}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{ultradata-api}}/v1/domain/activity?domain=neustar.biz&starttime={{starttime}}&endtime={{endtime}}",
+							"host": [
+								"{{ultradata-api}}"
+							],
+							"path": [
+								"v1",
+								"domain",
+								"activity"
+							],
+							"query": [
+								{
+									"key": "domain",
+									"value": "neustar.biz"
+								},
+								{
+									"key": "starttime",
+									"value": "{{starttime}}"
+								},
+								{
+									"key": "endtime",
+									"value": "{{endtime}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "extrarec",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ultradata-auth}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ultradata-api}}/v1/domain/extra/?domain=neustar.biz&starttime={{starttime}}&endtime={{endtime}}",
+							"host": [
+								"{{ultradata-api}}"
+							],
+							"path": [
+								"v1",
+								"domain",
+								"extra",
+								""
+							],
+							"query": [
+								{
+									"key": "domain",
+									"value": "neustar.biz"
+								},
+								{
+									"key": "starttime",
+									"value": "{{starttime}}"
+								},
+								{
+									"key": "endtime",
+									"value": "{{endtime}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hostips",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ultradata-auth}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{ultradata-api}}/v1/domain/hostips?domain=neustar.biz&starttime={{starttime}}&endtime={{endtime}}",
+							"host": [
+								"{{ultradata-api}}"
+							],
+							"path": [
+								"v1",
+								"domain",
+								"hostips"
+							],
+							"query": [
+								{
+									"key": "domain",
+									"value": "neustar.biz"
+								},
+								{
+									"key": "starttime",
+									"value": "{{starttime}}"
+								},
+								{
+									"key": "endtime",
+									"value": "{{endtime}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "subdomains",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ultradata-auth}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ultradata-api}}/v1/domain/subdomains/?domain=neustar.biz&starttime={{starttime}}&endtime={{endtime}}",
+							"host": [
+								"{{ultradata-api}}"
+							],
+							"path": [
+								"v1",
+								"domain",
+								"subdomains",
+								""
+							],
+							"query": [
+								{
+									"key": "domain",
+									"value": "neustar.biz"
+								},
+								{
+									"key": "starttime",
+									"value": "{{starttime}}"
+								},
+								{
+									"key": "endtime",
+									"value": "{{endtime}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "nameservers",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ultradata-auth}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ultradata-api}}/v1/domain/domainnameservers/?domain=neustar.biz&starttime={{starttime}}&endtime={{endtime}}",
+							"host": [
+								"{{ultradata-api}}"
+							],
+							"path": [
+								"v1",
+								"domain",
+								"domainnameservers",
+								""
+							],
+							"query": [
+								{
+									"key": "domain",
+									"value": "neustar.biz"
+								},
+								{
+									"key": "starttime",
+									"value": "{{starttime}}"
+								},
+								{
+									"key": "endtime",
+									"value": "{{endtime}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "zonedomains",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ultradata-auth}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ultradata-api}}/v1/domain/zonedomains/?domain=neustar.biz&starttime={{starttime}}&endtime={{endtime}}",
+							"host": [
+								"{{ultradata-api}}"
+							],
+							"path": [
+								"v1",
+								"domain",
+								"zonedomains",
+								""
+							],
+							"query": [
+								{
+									"key": "domain",
+									"value": "neustar.biz"
+								},
+								{
+									"key": "starttime",
+									"value": "{{starttime}}"
+								},
+								{
+									"key": "endtime",
+									"value": "{{endtime}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "address",
+			"item": [
+				{
+					"name": "hostdomains",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ultradata-auth}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{ultradata-api}}/v1/address/hostdomainnames?cidr=156.154.70.0-24&starttime={{starttime}}&endtime={{endtime}}",
+							"host": [
+								"{{ultradata-api}}"
+							],
+							"path": [
+								"v1",
+								"address",
+								"hostdomainnames"
+							],
+							"query": [
+								{
+									"key": "cidr",
+									"value": "156.154.70.0-24"
+								},
+								{
+									"key": "starttime",
+									"value": "{{starttime}}"
+								},
+								{
+									"key": "endtime",
+									"value": "{{endtime}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
 		{
 			"name": "get auth token",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "d9e23022-9fdd-4bda-8577-790fd2c682ea",
 						"exec": [
 							"pm.test(\"ultradata-auth and ultradata-refresh must exist\", function () {",
 							"pm.expect(pm.environment.has(\"ultradata-auth\")).to.equal(true);",
@@ -65,156 +403,11 @@
 			"response": []
 		},
 		{
-			"name": "version",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{ultradata-auth}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": []
-				},
-				"url": {
-					"raw": "{{ultradata-api}}/v1/version",
-					"host": [
-						"{{ultradata-api}}"
-					],
-					"path": [
-						"v1",
-						"version"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "domain-activity",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true,
-				"disabledSystemHeaders": {
-					"accept": true
-				}
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{ultradata-auth}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/vnd.neustar.threatfeeds.response.domainactivity.v1+json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": []
-				},
-				"url": {
-					"raw": "{{ultradata-api}}/v1/domain/activity?domain=neustar.biz&starttime=1601071800&endtime=1601292900",
-					"host": [
-						"{{ultradata-api}}"
-					],
-					"path": [
-						"v1",
-						"domain",
-						"activity"
-					],
-					"query": [
-						{
-							"key": "domain",
-							"value": "neustar.biz"
-						},
-						{
-							"key": "starttime",
-							"value": "1601071800"
-						},
-						{
-							"key": "endtime",
-							"value": "1601292900"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "hostips",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{ultradata-auth}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": []
-				},
-				"url": {
-					"raw": "{{ultradata-api}}/v1/domain/hostips?domain=neustar.biz&starttime=1598203342&endtime=1598205000",
-					"host": [
-						"{{ultradata-api}}"
-					],
-					"path": [
-						"v1",
-						"domain",
-						"hostips"
-					],
-					"query": [
-						{
-							"key": "domain",
-							"value": "neustar.biz"
-						},
-						{
-							"key": "starttime",
-							"value": "1598203342"
-						},
-						{
-							"key": "endtime",
-							"value": "1598205000"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "refresh token",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "eb6d5b46-97c6-4e20-ac3e-f01c0e95d6f0",
 						"exec": [
 							"pm.test(\"ultradata-auth and ultradata-refresh must exist\", function () {",
 							"pm.expect(pm.environment.has(\"ultradata-auth\")).to.equal(true);",
@@ -260,29 +453,41 @@
 				"description": "in case you need to refresh a token.  an example"
 			},
 			"response": []
-		}
-	],
-	"event": [
-		{
-			"listen": "prerequest",
-			"script": {
-				"id": "9bfe488c-d831-4a03-893a-2c80613a762b",
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
 		},
 		{
-			"listen": "test",
-			"script": {
-				"id": "4cb9af91-cfc3-47cb-9607-28e04c3b0888",
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
+			"name": "version",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ultradata-auth}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{ultradata-api}}/v1/version",
+					"host": [
+						"{{ultradata-api}}"
+					],
+					"path": [
+						"v1",
+						"version"
+					]
+				}
+			},
+			"response": []
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }
